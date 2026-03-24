@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>404 — Jing W. Pan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #0b0b0b;
+  --bg2:     #111110;
+  --fg:      #d8d4cc;
+  --fg-dim:  #7a756e;
+  --fg-mute: #2e2c28;
+  --accent:  #f0ece4;
+  --hi-dim:  #a09c96;
+  --danger:  #c07060;
+  --border:  #2e2c28;
+  --nav-act-bg: #d8d4cc;
+  --nav-act-fg: #0b0b0b;
+}
+[data-theme="light"] {
+  --bg:      #f2f0eb;
+  --bg2:     #eae7e1;
+  --fg:      #2a2218;
+  --fg-dim:  #7a6e62;
+  --fg-mute: #c4bfb7;
+  --accent:  #2a2218;
+  --hi-dim:  #7a6e62;
+  --danger:  #a03828;
+  --border:  #ccc8c0;
+  --nav-act-bg: #2a2218;
+  --nav-act-fg: #f2f0eb;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  background: var(--bg);
+  color: var(--fg);
+  font-size: 13px;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 24px 60px;
+}
+a { color: inherit; text-decoration: none; }
+
+.container {
+  width: 100%;
+  max-width: 520px;
+}
+
+/* ASCII 404 */
+.ascii-404 {
+  font-size: clamp(5px, 1.1vw, 10px);
+  line-height: 1.2;
+  white-space: pre;
+  color: var(--fg);
+  margin-bottom: 32px;
+  user-select: none;
+}
+
+.divider {
+  border: none;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+  height: 0;
+}
+
+.label {
+  color: var(--fg-dim);
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.message {
+  color: var(--fg);
+  line-height: 1.85;
+  margin-bottom: 8px;
+}
+.message-dim {
+  color: var(--fg-dim);
+  line-height: 1.85;
+  margin-bottom: 28px;
+}
+
+/* terminal block */
+.term-block {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 16px 18px;
+  margin-bottom: 32px;
+  font-size: 12.5px;
+}
+.term-line { color: var(--fg-dim); margin-bottom: 4px; }
+.term-line .prompt { color: var(--hi-dim); }
+.term-line .cmd    { color: var(--accent); }
+.term-line .err    { color: var(--danger); }
+
+/* home link */
+.home-link {
+  display: inline-block;
+  color: var(--fg);
+  font-size: 13px;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.home-link:hover { color: var(--hi-dim); }
+.home-link::before { content: '← '; color: var(--fg-dim); }
+
+/* statusbar */
+#statusbar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: transparent;
+  border-top: 1px solid var(--border);
+  height: 26px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 20px;
+  font-size: 12px;
+  color: var(--fg-dim);
+  font-family: 'JetBrains Mono', monospace;
+}
+#theme-btn {
+  background: none; border: none; font-family: inherit;
+  font-size: 12px; color: var(--fg);
+  cursor: pointer; padding: 0;
+  transition: color 0.15s;
+}
+#theme-btn:hover { color: var(--hi-dim); }
+
+/* blinking cursor */
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.cursor {
+  display: inline-block;
+  width: 7px; height: 13px;
+  background: var(--fg);
+  vertical-align: text-bottom;
+  margin-left: 2px;
+  animation: blink 1.1s step-end infinite;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <pre class="ascii-404">
+ ██╗  ██╗ ██████╗ ██╗  ██╗
+ ██║  ██║██╔═══██╗██║  ██║
+ ███████║██║   ██║███████║
+ ╚════██║██║   ██║╚════██║
+      ██║╚██████╔╝     ██║
+      ╚═╝ ╚═════╝      ╚═╝</pre>
+
+  <div class="divider"></div>
+
+  <div class="label">error · page not found</div>
+
+  <p class="message">This path doesn't exist.</p>
+  <p class="message-dim">Maybe a broken link, a mistyped URL,<br>or something that got moved.</p>
+
+  <div class="term-block">
+    <div class="term-line">
+      <span class="prompt">jing@portfolio:~$&nbsp;</span><span class="cmd">cd <span style="color:var(--danger);">/this/path</span></span>
+    </div>
+    <div class="term-line">
+      <span class="err">bash: /this/path: No such file or directory</span>
+    </div>
+    <div class="term-line" style="margin-top:8px;">
+      <span class="prompt">jing@portfolio:~$&nbsp;</span><span class="cursor"></span>
+    </div>
+  </div>
+
+  <a class="home-link" href="/">back to portfolio</a>
+
+</div>
+
+<div id="statusbar">
+  <span style="color:var(--fg-dim);">© Jing W. Pan &nbsp;|&nbsp; v2.0.26</span>
+  <button id="theme-btn" onclick="cycleTheme()">◑ dark</button>
+</div>
+
+<script>
+const THEMES = [{key:'', label:'dark'}, {key:'light', label:'light'}];
+let tIdx = 0;
+function cycleTheme() {
+  tIdx = (tIdx + 1) % THEMES.length;
+  document.documentElement.setAttribute('data-theme', THEMES[tIdx].key);
+  document.getElementById('theme-btn').textContent =
+    THEMES[tIdx].label === 'dark' ? '◑ dark' : '◐ light';
+}
+</script>
+</body>
+</html>
